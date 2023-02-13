@@ -1,0 +1,13 @@
+import createAPI from './api';
+
+class userService{
+    constructor(baseURL = "/api/myrestaurant/user") {
+        this.api = createAPI(baseURL);
+    }
+
+    async signUp(data) {
+        return (await this.api.post("/signup", data)).data;
+    }
+}
+
+export default new userService();
