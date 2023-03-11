@@ -5,6 +5,7 @@ const cookieparser = require('cookie-parser');
 const config = require('./app/config/index')
 const mongoose = require('mongoose');
 const userRoute = require('./app/routes/user.route');
+const foodRoute = require('./app/routes/food.route')
 
 
 app.use(cors());
@@ -16,6 +17,7 @@ app.get('/', (req, res) => {
 })
 
 app.use("/api/myrestaurant", userRoute);
+app.use("/api/myrestaurant/food", foodRoute);
 
 
 try {

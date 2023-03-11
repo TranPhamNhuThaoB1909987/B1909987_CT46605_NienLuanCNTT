@@ -19,9 +19,9 @@ exports.signUp = async (req, res, next) => {
   } else {
     const newUser = new User(req.body);
     const token = createToken(newUser._id);
-    res.cookie("jwt", token, { maxAge: time });
+    res.cookie("jwt", token, { maxAge: time *1000 });
     await newUser.save();
-    return res.status(200).json({ user: newUser, token: token });
+    return res.status(200).json(newUser);
   }
 };
 
@@ -30,8 +30,8 @@ exports.signIn = async (req, res, next) => {
   if (user) {
     if (user.password === req.body.password) {
       const token = createToken(user._id);
-      res.cookie("jwt", token, { maxAge: time });
-      return res.status(200).json({ message: "dang nhap thanh cong" });
+      res.cookie("jwt", token, { maxAge: time * 1000 });
+      return res.status(200).json(user);
     }else {
       return res.status(400).json({ message: "mat khau khong trung khop" });
     }
