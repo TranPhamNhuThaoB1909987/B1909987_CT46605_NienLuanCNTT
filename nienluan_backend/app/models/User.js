@@ -22,9 +22,9 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: 'guest'
     },
-    userFoods: [{
-        type: mongoose.Types.ObjectId, 
-        ref: 'User'
+    fooditems: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'FoodItem'
     }]
 })
 

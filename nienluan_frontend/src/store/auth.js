@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-
+import userService from '../services/user';
 export const authStore = defineStore("auth", {
   state: () => ({ userID: "", login: false }),
   getters: {
@@ -23,6 +23,7 @@ export const authStore = defineStore("auth", {
         this.login = false;
         this.userID = '';
         localStorage.removeItem('user');
+        userService.signOut();
     }
   },
 });

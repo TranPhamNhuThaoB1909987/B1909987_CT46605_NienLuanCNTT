@@ -26,7 +26,7 @@
                     <img src="../assets/images/bg/cart.png" alt="">
                 </div>
                 <div class="item">
-                    <i class="fa-solid fa-arrow-right-from-bracket"></i> 
+                    <i @click="auth.logout()" class="fa-solid fa-arrow-right-from-bracket"></i> 
                 </div>
             </div>
             <div v-else id="actions">

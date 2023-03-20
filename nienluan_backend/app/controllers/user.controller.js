@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const FoodItem = require("../models/FoodItem");
 const JWT = require("jsonwebtoken");
 const config = require("../config/index");
 const time = 60 * 60 * 3;
@@ -39,3 +40,8 @@ exports.signIn = async (req, res, next) => {
     return res.status(403).json({message: "email chua duoc dang ky"});
   }
 };
+
+exports.signOut = (req, res, next) => {
+  res.cookie('jwt', '', {maxAge: 1});
+  return res.send('SignOut');
+}

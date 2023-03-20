@@ -1,9 +1,6 @@
 <template>
-  <footer class="text-center text-lg-start bg-light text-muted">
-    <section
-      class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
-    ></section>
-    <section class="">
+  <footer class="text-center text-lg-start text-muted">
+    <section class="footer-section">
       <div class="container text-center text-md-start mt-5">
         <div class="row mt-3">
           <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
@@ -58,6 +55,16 @@
 </template>
 
 <style scoped>
+
+footer{
+  background-color: yellow;
+  color: black !important;
+  margin-top: 40px;
+}
+
+.footer-section {
+  padding-top: 20px;
+}
 
 .row #col-left img{
     width: 60%;
