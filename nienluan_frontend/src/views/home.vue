@@ -95,7 +95,6 @@ export default {
             foodID: foodID,
             number: number,
           });
-          console.log(number);
           await fooditemService.addFood(foodItem);
           alert("MUA HÀNG THÀNH CÔNG");
         }else{

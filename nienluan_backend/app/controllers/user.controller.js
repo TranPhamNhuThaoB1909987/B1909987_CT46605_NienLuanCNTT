@@ -20,7 +20,7 @@ exports.signUp = async (req, res, next) => {
   } else {
     const newUser = new User(req.body);
     const token = createToken(newUser._id);
-    res.cookie("jwt", token, { maxAge: time *1000 });
+    res.cookie("jwt", token, { maxAge: time * 1000 });
     await newUser.save();
     return res.status(200).json(newUser);
   }
@@ -33,15 +33,27 @@ exports.signIn = async (req, res, next) => {
       const token = createToken(user._id);
       res.cookie("jwt", token, { maxAge: time * 1000 });
       return res.status(200).json(user);
-    }else {
+    } else {
       return res.status(400).json({ message: "mat khau khong trung khop" });
     }
   } else {
-    return res.status(403).json({message: "email chua duoc dang ky"});
+    return res.status(403).json({ message: "email chua duoc dang ky" });
   }
 };
 
 exports.signOut = (req, res, next) => {
-  res.cookie('jwt', '', {maxAge: 1});
-  return res.send('SignOut');
-}
+  res.cookie("jwt", "", { maxAge: 1 });
+  return res.send("SignOut");
+};
+
+exports.getUserByID = async (req, res, next) => {
+  const user = await User.findById(req.params.id).populate({
+    path: "fooditems",
+    model: "FoodItem",
+    populate: {
+      path: "foodID",
+      model: "Food",
+    },
+  });
+  return res.send(user);
+};

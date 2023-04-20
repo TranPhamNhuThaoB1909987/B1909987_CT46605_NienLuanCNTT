@@ -1,7 +1,8 @@
 import { defineStore } from "pinia";
 import userService from '../services/user';
+import { useRouter } from 'vue-router';
 export const authStore = defineStore("auth", {
-  state: () => ({ userID: "", login: false }),
+  state: () => ({ userID: "", login: false, role: "guest", router: useRouter() }),
   getters: {
     getUserID: (state) => state.userID,
   },
@@ -16,6 +17,11 @@ export const authStore = defineStore("auth", {
       if(document.cookie !=null && localStorage.getItem('user') != null){
         this.setLogin(localStorage.getItem('user'));
         this.login = true;
+        userService.getUserByID(localStorage.getItem('user'))
+          .then(user => {
+            this.role = user.role;
+          })
+        console.log(this.role)
       }
     },
 

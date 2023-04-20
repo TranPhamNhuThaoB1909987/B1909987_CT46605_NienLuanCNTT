@@ -1,10 +1,13 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-const foodControoler = require('../controllers/food.controller');
+const foodController = require("../controllers/food.controller");
 
-router.route('/')
-    .get(foodControoler.getAllFoods)
-    .post(foodControoler.createFood)
+router
+  .route("/")
+  .get(foodController.getAllFoods)
+  .post(foodController.createFood);
+
+router.route("/:id").get(foodController.getFoodByID);
 
 module.exports = router;

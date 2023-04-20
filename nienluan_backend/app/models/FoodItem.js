@@ -10,6 +10,14 @@ const fooditemSchema = new mongoose.Schema({
     },
     total: {
         type: Number
+    },
+    user: {
+        type: mongoose.Types.ObjectId,
+        ref: 'User'
+    },
+    booked: {
+        type: Boolean,
+        default: false
     }
 })
 

@@ -16,7 +16,12 @@ export default {
                 console.log(data)
                 const user = await userService.signIn(data);
                 auth.setLogin(user._id);
-                router.push({name: 'Home'});
+                auth.checkUser();
+                if(auth.role == 'admin') {
+                    auth.router.push({name: 'adminPage'});
+                } else {
+                    router.push({name: 'Home'});
+                }
             } catch (error) {
                 console.log(error)
             }
