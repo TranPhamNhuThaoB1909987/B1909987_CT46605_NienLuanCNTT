@@ -11,13 +11,19 @@
           </router-link>
         </div>
         <div class="item">
-          <a class="link" href="menu.html">Thực đơn</a>
+          <router-link class="link" :to="{name: 'News'}">
+            Tin tức
+          </router-link>
         </div>
         <div class="item">
-          <a class="link" href="discount.html">Khuyến mãi</a>
+          <router-link class="link" :to="{name: 'Discount'}">
+            Khuyến mãi
+          </router-link>
         </div>
         <div class="item">
-          <a class="link" href="contact.html">Liên hệ</a>
+          <router-link class="link" :to="{name: 'Contact'}">
+            Liên hệ
+          </router-link>
         </div>
       </div>
       <div v-if="auth.login" id="actions">
